@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Scene Review Portal | Poor in Spirit, Rich in God</title>
+  <title>Scene-by-Scene Review Portal | Poor in Spirit, Rich in God</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -19,7 +19,7 @@
     }
     .header {
       text-align: center;
-      max-width: 680px;
+      max-width: 720px;
       margin-top: 8px;
       margin-bottom: 16px;
     }
@@ -49,28 +49,59 @@
       line-height: 1.4;
     }
 
-    /* Scene Selector Tabs */
+    /* Scene Selector Dropdown & Quick Navigation */
+    .nav-container {
+      width: 100%;
+      max-width: 720px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .select-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    select.scene-dropdown {
+      width: 100%;
+      background: #1e293b;
+      color: #f8fafc;
+      border: 1px solid #334155;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    .select-arrow {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #94a3b8;
+      font-size: 12px;
+    }
+
     .tab-bar {
       display: flex;
       gap: 6px;
-      max-width: 680px;
-      width: 100%;
       background: #111827;
       padding: 6px;
       border-radius: 14px;
       border: 1px solid #1f2937;
-      margin-bottom: 16px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
     .tab-btn {
-      flex: 1;
-      min-width: 130px;
-      padding: 10px 12px;
+      flex: 0 0 auto;
+      padding: 8px 14px;
       background: transparent;
       border: none;
       color: #94a3b8;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       border-radius: 10px;
       cursor: pointer;
@@ -90,7 +121,7 @@
 
     .player-card {
       width: 100%;
-      max-width: 680px;
+      max-width: 720px;
       background: #151d2f;
       border-radius: 16px;
       overflow: hidden;
@@ -148,7 +179,7 @@
     }
 
     .status-card {
-      max-width: 680px;
+      max-width: 720px;
       width: 100%;
       background: #0f172a;
       border-radius: 12px;
@@ -171,7 +202,7 @@
       margin-top: 10px;
       color: #e2e8f0;
       font-style: italic;
-      font-size: 12.5px;
+      font-size: 13px;
     }
 
     .scene-content { display: none; }
@@ -181,145 +212,356 @@
 <body>
 
   <div class="header">
-    <div class="badge">🎬 Production Continuity Review</div>
-    <h1 id="page-title">Scene Review: Scene 04</h1>
+    <div class="badge">🎬 Scene-by-Scene Review Portal</div>
+    <h1 id="page-title">Scene 01: Galilee Hillside (0:00 – 0:15)</h1>
     <p class="subtitle">Exact 15.000s • 360 frames @ 24fps • Full 48kHz Narration & Soundscape</p>
   </div>
 
-  <!-- Scene Selector Tabs -->
-  <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchScene('sc04')">Scene 04 (0:45)</button>
-    <button class="tab-btn" onclick="switchScene('sc08')">Scene 08 (1:45)</button>
-    <button class="tab-btn" onclick="switchScene('sc09')">Scene 09 (2:00)</button>
-    <button class="tab-btn" onclick="switchScene('sc11')">Scene 11 (2:30)</button>
+  <!-- Scene Selector Dropdown & Quick Tabs -->
+  <div class="nav-container">
+    <div class="select-wrapper">
+      <select id="scene-select" class="scene-dropdown" onchange="switchScene(this.value)">
+        <option value="sc01" selected>Scene 01 (0:00 – 0:15) — Sunlit Hills of Galilee</option>
+        <option value="sc02">Scene 02 (0:15 – 0:30) — Leo's Grand Tower</option>
+        <option value="sc03">Scene 03 (0:30 – 0:45) — The Tremble & Collapse</option>
+        <option value="sc04">Scene 04 (0:45 – 1:00) — Leo Mourning the Ruins</option>
+        <option value="sc05">Scene 05 (1:00 – 1:15) — Jesus on the Mount</option>
+        <option value="sc06">Scene 06 (1:15 – 1:30) — Jesus Leans to Children (Clay Jar Setup)</option>
+        <option value="sc07">Scene 07 (1:30 – 1:45) — The Broken Clay Jar</option>
+        <option value="sc08">Scene 08 (1:45 – 2:00) — Maya Offers Help (Leo's Refusal)</option>
+        <option value="sc09">Scene 09 (2:00 – 2:15) — Mom Sarah's Comfort (Pre-Collapsed Pile)</option>
+        <option value="sc10">Scene 10 (2:15 – 2:30) — Leo Reaching Out for Help</option>
+        <option value="sc11">Scene 11 (2:30 – 2:45) — Collaborative Rebuild & Hero Shot</option>
+        <option value="sc12">Scene 12 (2:45 – 3:00) — Proclamation of the Kingdom</option>
+        <option value="sc13">Scene 13 (3:00 – 3:15) — Celestial Kingdom of Heaven</option>
+        <option value="sc14">Scene 14 (3:15 – 3:30) — Toddler in the Flower Meadow</option>
+        <option value="sc15">Scene 15 (3:30 – 3:45) — Childlike Humility Scripture</option>
+        <option value="sc16">Scene 16 (3:45 – 4:00) — Sabbath School Classroom</option>
+        <option value="sc17">Scene 17 (4:00 – 4:15) — Evening Bedside Prayer</option>
+        <option value="sc18">Scene 18 (4:15 – 4:30) — Sunset Glow Over Galilee</option>
+        <option value="sc19">Scene 19 (4:30 – 4:45) — Jesus Speaks the Beatitude Direct to Camera</option>
+        <option value="sc20">Scene 20 (4:45 – 5:00) — Parting Promise Finale</option>
+      </select>
+      <div class="select-arrow">▼</div>
+    </div>
+
+    <!-- Quick Tab Bar -->
+    <div class="tab-bar">
+      <button class="tab-btn active" id="tab-sc01" onclick="switchScene('sc01')">Sc 01</button>
+      <button class="tab-btn" id="tab-sc02" onclick="switchScene('sc02')">Sc 02</button>
+      <button class="tab-btn" id="tab-sc03" onclick="switchScene('sc03')">Sc 03</button>
+      <button class="tab-btn" id="tab-sc04" onclick="switchScene('sc04')">Sc 04</button>
+      <button class="tab-btn" id="tab-sc05" onclick="switchScene('sc05')">Sc 05</button>
+      <button class="tab-btn" id="tab-sc06" onclick="switchScene('sc06')">Sc 06</button>
+      <button class="tab-btn" id="tab-sc07" onclick="switchScene('sc07')">Sc 07</button>
+      <button class="tab-btn" id="tab-sc08" onclick="switchScene('sc08')">Sc 08</button>
+      <button class="tab-btn" id="tab-sc09" onclick="switchScene('sc09')">Sc 09</button>
+      <button class="tab-btn" id="tab-sc10" onclick="switchScene('sc10')">Sc 10</button>
+      <button class="tab-btn" id="tab-sc11" onclick="switchScene('sc11')">Sc 11</button>
+      <button class="tab-btn" id="tab-sc12" onclick="switchScene('sc12')">Sc 12</button>
+      <button class="tab-btn" id="tab-sc13" onclick="switchScene('sc13')">Sc 13</button>
+      <button class="tab-btn" id="tab-sc14" onclick="switchScene('sc14')">Sc 14</button>
+      <button class="tab-btn" id="tab-sc15" onclick="switchScene('sc15')">Sc 15</button>
+      <button class="tab-btn" id="tab-sc16" onclick="switchScene('sc16')">Sc 16</button>
+      <button class="tab-btn" id="tab-sc17" onclick="switchScene('sc17')">Sc 17</button>
+      <button class="tab-btn" id="tab-sc18" onclick="switchScene('sc18')">Sc 18</button>
+      <button class="tab-btn" id="tab-sc19" onclick="switchScene('sc19')">Sc 19</button>
+      <button class="tab-btn" id="tab-sc20" onclick="switchScene('sc20')">Sc 20</button>
+    </div>
   </div>
 
   <!-- Player Card -->
   <div class="player-card">
     <video id="main-video" controls playsinline preload="auto">
-      <source id="video-source" src="Scene_04_Review.mp4" type="video/mp4">
+      <source id="video-source" src="Scene_01_Review.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
     <div class="actions">
-      <a id="btn-download" class="btn btn-download" href="Scene_04_Review.mp4" download="Scene_04_Review.mp4">
+      <a id="btn-download" class="btn btn-download" href="Scene_01_Review.mp4" download="Scene_01_Review.mp4">
         ⬇️ Save Video to Phone / Files
       </a>
-      <a id="btn-raw" class="btn btn-secondary" href="Scene_04_Review.mp4" target="_blank">
+      <a id="btn-raw" class="btn btn-secondary" href="Scene_01_Review.mp4" target="_blank">
         ▶️ Open Direct Video Stream
       </a>
 
       <div class="tip-box">
-        💡 <strong>iPhone / Android Tip:</strong> Tap <em>"Save Video to Phone"</em> to download. In Safari, you can also long-press the video or tap the Share icon <span style="font-size:14px">⎙</span> and select <em>"Save Video"</em> to save directly to your Photos / Camera Roll!
+        💡 <strong>iPhone / Android Tip:</strong> Tap <em>"Save Video to Phone"</em> to download. In Safari, you can also long-press the video or tap Share <span style="font-size:14px">⎙</span> and select <em>"Save Video"</em> to save directly to your Camera Roll!
       </div>
     </div>
   </div>
 
-  <!-- Scene 04 Details -->
-  <div id="content-sc04" class="status-card scene-content active">
-    <strong>Audited Changes in Scene 04 (0:45 – 1:00):</strong>
+  <!-- Dynamic Scene Content Cards (sc01 to sc20) -->
+  <div id="content-sc01" class="status-card scene-content active">
+    <strong>Scene 01 (0:00 – 0:15) Details & Narration:</strong>
     <div class="narration-box">
-      "For three days, eight-year-old Leo had been working on his masterpiece: a towering wooden castle with bridges, spires, and walls that stretched across his bedroom floor. It was the tallest thing he had ever made, and he had built every single inch of it himself."
+      "Long ago, beside the sunlit hills of Galilee, crowds of families and children walked together, eager to hear Jesus."
     </div>
     <ul style="margin-top: 12px;">
-      <li><span class="check">✓</span> <strong>Jarring 52s Jump Cut Eliminated</strong>: Spliced seamlessly with continuous, unbroken overhead crane rotation over Leo sitting amid the fallen blocks on the Persian rug through t=10.37s, smoothly dissolving into an intimate close-up of Leo with tears welling up in his eyes as narration speaks (<em>"Have you ever felt like that, when everything fell apart?"</em>). Zero standing tower hallucination, zero jump cuts.</li>
-      <li><span class="check">✓</span> <strong>Floating Blocks Eradicated</strong>: All wooden blocks sit firmly flat on the bedroom carpet rug with realistic contact shadows and ambient occlusion. Bottom boundary framed cleanly to eliminate all mid-air hovering pieces.</li>
-      <li><span class="check">✓</span> <strong>Physical Continuity</strong>: Leo in blue hoodie, wooden blocks with consistent wood grain, consistent bedside table and window morning lighting.</li>
+      <li><span class="check">✓</span> <strong>Visual Continuity</strong>: Wide cinematic drone shot descending over the green terraced Galilean hills overlooking the blue waters of Galilee, with olive trees, wildflowers, and crowds of pilgrims walking up the winding stone paths.</li>
+      <li><span class="check">✓</span> <strong>Character Introduction</strong>: Focuses on travelers in Biblical attire walking upward, concluding with Jesus walking calmly along the grassy hillside crest in white robe and crimson sash, looking back with a warm smile.</li>
+      <li><span class="check">✓</span> <strong>Lighting & Atmosphere</strong>: Morning sunrays streaming through the clouds, warm golden light, cinematic 3D depth.</li>
     </ul>
   </div>
 
-  <!-- Scene 08 Details -->
+  <div id="content-sc02" class="status-card scene-content">
+    <strong>Scene 02 (0:15 – 0:30) Details & Narration:</strong>
+    <div class="narration-box">
+      "In his quiet bedroom, sitting on his colorful rug, Leo was building a tall wooden tower. He wanted to do it all by himself."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Visual Continuity</strong>: Leo in blue hoodie seated on his colorful geometric Persian rug, carefully stacking beechwood blocks. Consistent desk, bedside lighting, and warm bedroom interior.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc03" class="status-card scene-content">
+    <strong>Scene 03 (0:30 – 0:45) Details & Narration:</strong>
+    <div class="narration-box">
+      "Carefully, he placed the top block. But the tower began to wobble, sway, and crash! Wooden blocks scattered all across the rug."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Motion Analysis</strong>: Continuous motion throughout (min diff 0.2686, zero frozen frames). Leo reaches up, the tower trembles and tilts, and blocks collapse onto the soft rug.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc04" class="status-card scene-content">
+    <strong>Scene 04 (0:45 – 1:00) Details & Narration:</strong>
+    <div class="narration-box">
+      "Have you ever felt like that, when everything fell apart? Sometimes in life, our plans crumble."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Jarring 52s Jump Cut Eliminated</strong>: Spliced seamlessly with continuous, unbroken overhead crane rotation over Leo sitting amid the fallen blocks on the Persian rug through t=10.37s, smoothly dissolving into an intimate close-up of Leo with tears welling in his eyes.</li>
+      <li><span class="check">✓</span> <strong>Grounded Physics</strong>: All wooden blocks rest flat on the carpet rug with contact shadows. Zero mid-air hovering pieces; zero standing castle.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc05" class="status-card scene-content">
+    <strong>Scene 05 (1:00 – 1:15) Details & Narration:</strong>
+    <div class="narration-box">
+      "Jesus sat down on the grassy hillside. The people were weary and carried heavy burdens in their hearts. They longed for hope."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Visual Continuity</strong>: Jesus seated upon a natural stone on the grassy mount, surrounded by attentive listeners and children sitting peacefully on the grass.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc06" class="status-card scene-content">
+    <strong>Scene 06 (1:15 – 1:30) Details & Narration:</strong>
+    <div class="narration-box">
+      "Jesus smiled and leaned close to the children, beginning His teaching with a story: 'Once, there was a clay water jar...'"
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Restored Parable Setup</strong>: Narrative bridge introducing the broken clay jar parable with gentle warmth and close interaction with the gathered children.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc07" class="status-card scene-content">
+    <strong>Scene 07 (1:30 – 1:45) Details & Narration:</strong>
+    <div class="narration-box">
+      "The jar slipped and shattered into pieces. 'A broken jar cannot hold water on its own,' Jesus explained gently."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Parable Visual</strong>: Earthen terracotta jar resting in pieces on the ground, illustrating human insufficiency and our need for God.</li>
+    </ul>
+  </div>
+
   <div id="content-sc08" class="status-card scene-content">
-    <strong>Audited Changes in Scene 08 (1:45 – 2:00):</strong>
+    <strong>Scene 08 (1:45 – 2:00) Details & Narration:</strong>
     <div class="narration-box">
       "Leo frowned and looked away. 'No,' he said, his voice quiet but sharp. 'I can do it myself. I don't need help.'"
     </div>
     <ul style="margin-top: 12px;">
-      <li><span class="check">✓</span> <strong>Help Rejection Synchronization</strong>: In direct synchronization with the narration ("Leo frowned and looked away"), Leo maintains a firm defensive crossed-arms refusal posture and pout throughout Shot 3 right up to the cut at 2:00.</li>
-      <li><span class="check">✓</span> <strong>Zero Premature Acceptance</strong>: Leo NEVER drops his hands, NEVER uncrosses his arms, and NEVER reaches out or grabs Maya's arch block.</li>
-      <li><span class="check">✓</span> <strong>Character Rigidity & Emotion</strong>: Retimed via motion interpolation to sustain Leo's authentic defensive posture, perfectly matching the script.</li>
+      <li><span class="check">✓</span> <strong>Refusal Gesture Synchronization</strong>: Leo maintains a firm crossed-arms refusal posture and defensive frown, turning away from Maya as she enters with the arch block. Zero reaching out.</li>
     </ul>
   </div>
 
-  <!-- Scene 09 Details -->
   <div id="content-sc09" class="status-card scene-content">
-    <strong>Audited Changes in Scene 09 (2:00 – 2:15):</strong>
+    <strong>Scene 09 (2:00 – 2:15) Details & Narration:</strong>
     <div class="narration-box">
       "His mother, Sarah, came in and sat beside him on the floor. 'It hurts when something you worked so hard on falls apart,' she said gently. 'You know, Leo, you don't have to build it all by yourself.'"
     </div>
     <ul style="margin-top: 12px;">
-      <li><span class="check">✓</span> <strong>Pre-Collapsed Castle Staging</strong>: The wooden block castle is ALREADY completely in a stationary fallen pile on the ornate Persian rug from frame 1 when Sarah enters. Zero premature standing structures.</li>
-      <li><span class="check">✓</span> <strong>Strictly ONE Mom Sarah</strong>: Zero clone mothers. Only Mom Sarah in her teal cardigan and white blouse kneeling beside Leo.</li>
-      <li><span class="check">✓</span> <strong>Zero Floating Blocks / Zero Reverses</strong>: Blocks rest flat on the rug for the entire scene (zero blocks lifting into the air, zero reverse explosion loops).</li>
-      <li><span class="check">✓</span> <strong>Intimate Comfort Close-Up</strong>: Spliced seamlessly into a warm close-up of Mom Sarah smiling gently with her hand on Leo's shoulder as she delivers her line.</li>
+      <li><span class="check">✓</span> <strong>Pre-Collapsed Castle Staging</strong>: The wooden blocks are ALREADY completely in a stationary fallen pile on the rug from frame 1 when Mom Sarah enters. Strictly ONE Mom Sarah in teal cardigan; zero reverse explosions; zero floaters.</li>
     </ul>
   </div>
 
-  <!-- Scene 11 Details -->
+  <div id="content-sc10" class="status-card scene-content">
+    <strong>Scene 10 (2:15 – 2:30) Details & Narration:</strong>
+    <div class="narration-box">
+      "Leo took a deep breath. Instead of staying stubborn, he opened his hands and asked: 'Mom, Maya... will you help me?'"
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Emotional Shift</strong>: Leo opens his hands in humility, letting go of pride and inviting his mother and sister to build with him.</li>
+    </ul>
+  </div>
+
   <div id="content-sc11" class="status-card scene-content">
-    <strong>Audited Changes in Scene 11 (2:30 – 2:45):</strong>
+    <strong>Scene 11 (2:30 – 2:45) Details & Narration:</strong>
     <div class="narration-box">
       "Together, the three of them built a castle far taller and stronger than Leo could have made on his own. Leo stepped back, smiling."
     </div>
     <ul style="margin-top: 12px;">
-      <li><span class="check">✓</span> <strong>Forward Collaborative Rebuild</strong>: Maya places the wooden arch on top of the towers while Mom Sarah steadies the pillars with both hands and Leo places the foundation.</li>
-      <li><span class="check">✓</span> <strong>Zero Morphing & Zero Reverses</strong>: Blocks do not morph or spontaneously change shapes. All pieces are placed naturally by hand with realistic gravity.</li>
-      <li><span class="check">✓</span> <strong>Emotional Resolution</strong>: Maya claps and laughs with pure delight, Mom smiles warmly, and Leo beams happily at what they built together.</li>
-      <li><span class="check">✓</span> <strong>Finished Masterpiece Hero Shot</strong>: Concludes with a majestic close tracking shot of the completed wooden castle standing solid and tall on the rug in the morning sun.</li>
+      <li><span class="check">✓</span> <strong>Forward Collaborative Rebuild</strong>: Forward assembly—Mom Sarah steadying pillars, Maya placing the roof arch, Leo setting the foundation, concluding with completed castle hero shot.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc12" class="status-card scene-content">
+    <strong>Scene 12 (2:45 – 3:00) Details & Narration:</strong>
+    <div class="narration-box">
+      "Jesus smiled as He shared God's wonderful promise. Because after He said 'Blessed are the poor in spirit', He gave the greatest blessing of all..."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Visual Continuity</strong>: Jesus smiling warmly on the Mount of Beatitudes, speaking with radiant divine grace.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc13" class="status-card scene-content">
+    <strong>Scene 13 (3:00 – 3:15) Details & Narration:</strong>
+    <div class="narration-box">
+      "'For theirs is the kingdom of heaven!' A kingdom filled with God's endless love, joy, and peace for all who trust Him."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Celestial Kingdom</strong>: Luminous golden light and heavenly vistas representing the spiritual abundance of God's Kingdom.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc14" class="status-card scene-content">
+    <strong>Scene 14 (3:15 – 3:30) Details & Narration:</strong>
+    <div class="narration-box">
+      "Like a toddler taking first steps across a meadow. When little legs wobble and fall, the baby does not boast. They reach up their little arms to be lifted."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Visual Parable</strong>: Toddler in meadow reaching up with childlike innocence and complete trust.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc15" class="status-card scene-content">
+    <strong>Scene 15 (3:30 – 3:45) Details & Narration:</strong>
+    <div class="narration-box">
+      "Jesus welcomed the little children, saying: 'Whoever humbles themselves like this child is the greatest in the kingdom of heaven.' When we are humble, Jesus holds us close."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Scripture Restored</strong>: Matthew 18:4 scripture narration accurately restored without buzzwords.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc16" class="status-card scene-content">
+    <strong>Scene 16 (3:45 – 4:00) Details & Narration:</strong>
+    <div class="narration-box">
+      "That Sabbath morning at church, Leo looked around his Sabbath School classroom. He saw that we learn and build better together, not alone. He raised his hand with a happy smile."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Classroom Continuity</strong>: Warm, welcoming Sabbath school setting where Leo participates enthusiastically with his peers.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc17" class="status-card scene-content">
+    <strong>Scene 17 (4:00 – 4:15) Details & Narration:</strong>
+    <div class="narration-box">
+      "That evening at home, Leo knelt by his bed and prayed: 'Dear God, I need You every day.' Right there in the quiet room, Leo felt rich in God's love."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Bedroom Sanctuary</strong>: Peaceful evening lighting as Leo kneels in reverent, heartfelt prayer beside his bed.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc18" class="status-card scene-content">
+    <strong>Scene 18 (4:15 – 4:30) Details & Narration:</strong>
+    <div class="narration-box">
+      "As the sunset glowed across Galilee, the people's hearts were full. True riches do not come from pretending to be strong. True riches come from trusting in God."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Sunset Panorama</strong>: Golden hour amber glow spreading across the Galilean landscape and tranquil lake.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc19" class="status-card scene-content">
+    <strong>Scene 19 (4:30 – 4:45) Details & Narration:</strong>
+    <div class="narration-box">
+      "Leo learned that when we open our hands and ask for help, God fills our lives with love. Listen now as Jesus speaks His blessing directly to you: 'Blessed are the poor in spirit, for theirs is the kingdom of heaven.'"
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Direct-to-Camera Close-Up</strong>: Jesus looks directly into the lens with outstretched hand, speaking the Beatitude with deep warmth.</li>
+    </ul>
+  </div>
+
+  <div id="content-sc20" class="status-card scene-content">
+    <strong>Scene 20 (4:45 – 5:00) Details & Narration:</strong>
+    <div class="narration-box">
+      "Blessed are the poor in spirit, for theirs is the kingdom of heaven. Remember, my children: whenever your hands are empty, I am always with you."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Scripture Memory Finale</strong>: Jesus delivers His parting promise without repeating the Beatitude twice.</li>
     </ul>
   </div>
 
   <script>
-    const scenes = {
-      sc04: {
-        title: "Scene Review: Scene 04 (0:45 – 1:00)",
-        file: "Scene_04_Review.mp4"
-      },
-      sc08: {
-        title: "Scene Review: Scene 08 (1:45 – 2:00)",
-        file: "Scene_08_Review.mp4"
-      },
-      sc09: {
-        title: "Scene Review: Scene 09 (2:00 – 2:15)",
-        file: "Scene_09_Review.mp4"
-      },
-      sc11: {
-        title: "Scene Review: Scene 11 (2:30 – 2:45)",
-        file: "Scene_11_Review.mp4"
-      }
+    const sceneTitles = {
+      sc01: "Scene 01: Galilee Hillside (0:00 – 0:15)",
+      sc02: "Scene 02: Leo's Grand Tower (0:15 – 0:30)",
+      sc03: "Scene 03: The Tremble & Collapse (0:30 – 0:45)",
+      sc04: "Scene 04: Leo Mourning the Ruins (0:45 – 1:00)",
+      sc05: "Scene 05: Jesus on the Mount (1:00 – 1:15)",
+      sc06: "Scene 06: Jesus Leans to Children (1:15 – 1:30)",
+      sc07: "Scene 07: The Broken Clay Jar (1:30 – 1:45)",
+      sc08: "Scene 08: Maya Offers Help (1:45 – 2:00)",
+      sc09: "Scene 09: Mom Sarah's Comfort (2:00 – 2:15)",
+      sc10: "Scene 10: Leo Reaching Out (2:15 – 2:30)",
+      sc11: "Scene 11: Collaborative Rebuild (2:30 – 2:45)",
+      sc12: "Scene 12: Proclamation of the Kingdom (2:45 – 3:00)",
+      sc13: "Scene 13: Celestial Kingdom (3:00 – 3:15)",
+      sc14: "Scene 14: Toddler in Meadow (3:15 – 3:30)",
+      sc15: "Scene 15: Childlike Humility (3:30 – 3:45)",
+      sc16: "Scene 16: Sabbath School (3:45 – 4:00)",
+      sc17: "Scene 17: Evening Bedside Prayer (4:00 – 4:15)",
+      sc18: "Scene 18: Sunset Over Galilee (4:15 – 4:30)",
+      sc19: "Scene 19: Jesus Speaks Beatitude (4:30 – 4:45)",
+      sc20: "Scene 20: Parting Promise Finale (4:45 – 5:00)"
     };
 
     function switchScene(key) {
-      const data = scenes[key];
-      if (!data) return;
+      const num = key.replace('sc', '');
+      const paddedNum = num.padStart(2, '0');
+      const filename = `Scene_${paddedNum}_Review.mp4`;
 
-      document.getElementById('page-title').innerText = data.title;
-      
+      // Update Header
+      document.getElementById('page-title').innerText = sceneTitles[key] || `Scene ${paddedNum}`;
+
+      // Update Video Player
       const video = document.getElementById('main-video');
       const source = document.getElementById('video-source');
-      source.src = data.file;
+      source.src = filename;
       video.load();
 
+      // Update Buttons
       const btnDownload = document.getElementById('btn-download');
-      btnDownload.href = data.file;
-      btnDownload.setAttribute('download', data.file);
+      btnDownload.href = filename;
+      btnDownload.setAttribute('download', filename);
 
       const btnRaw = document.getElementById('btn-raw');
-      btnRaw.href = data.file;
+      btnRaw.href = filename;
 
-      document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
-        const keys = ['sc04', 'sc08', 'sc09', 'sc11'];
-        if (keys[idx] === key) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
+      // Update Dropdown
+      document.getElementById('scene-select').value = key;
+
+      // Update Tabs
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
       });
+      const activeTab = document.getElementById('tab-' + key);
+      if (activeTab) {
+        activeTab.classList.add('active');
+        activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
 
+      // Update Details Content
       document.querySelectorAll('.scene-content').forEach(el => {
         el.classList.remove('active');
       });
-      document.getElementById('content-' + key).classList.add('active');
+      const contentEl = document.getElementById('content-' + key);
+      if (contentEl) {
+        contentEl.classList.add('active');
+      }
     }
   </script>
 
