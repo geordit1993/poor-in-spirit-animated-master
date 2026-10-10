@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Scene Review Portal | Poor in Spirit, Rich in God</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #0b0f19;
+      color: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .header {
+      text-align: center;
+      max-width: 650px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+      letter-spacing: -0.5px;
+    }
+    p.subtitle {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+    .player-card {
+      width: 100%;
+      max-width: 680px;
+      background: #151d2f;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      border: 1px solid #1e293b;
+      margin-bottom: 18px;
+    }
+    video {
+      width: 100%;
+      display: block;
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+    .actions {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+    .btn-download {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+    }
+    .btn-secondary {
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid #334155;
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .status-card {
+      max-width: 680px;
+      width: 100%;
+      background: #0f172a;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid #1e293b;
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .status-card strong { color: #f1f5f9; }
+    .status-card ul { margin-left: 20px; margin-top: 8px; }
+    .status-card li { margin-bottom: 6px; }
+    .check { color: #34d399; font-weight: bold; margin-right: 4px; }
+    .scene-nav {
+      max-width: 680px;
+      width: 100%;
+      background: #131b2e;
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid #1e293b;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .scene-nav h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+    .scene-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .pill-active {
+      background: #10b981;
+      color: #ffffff;
+    }
+    .pill-pending {
+      background: #1e293b;
+      color: #64748b;
+      border: 1px solid #283548;
+    }
+    .tip-box {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 12px;
+      color: #93c5fd;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="badge">🎬 Production Quality Review • Clip 1 of 4</div>
+    <h1>Scene 04 Review (0:45 – 1:00)</h1>
+    <p class="subtitle">15.000s • 360 frames @ 24fps • Full 48kHz Ava Narration & Audio</p>
+  </div>
+
+  <div class="player-card">
+    <video controls playsinline preload="auto" poster="poster.jpg">
+      <source src="Scene_04_Review.mp4" type="video/mp4">
+      <source src="https://github.com/geordit1993/poor-in-spirit-animated-master/releases/download/v2.5.0/Scene_04_Review.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="actions">
+      <a class="btn btn-download" href="Scene_04_Review.mp4" download="Scene_04_Review.mp4">
+        ⬇️ Save Video to Phone / Files (22.8 MB)
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/geordit1993/poor-in-spirit-animated-master/releases/download/v2.5.0/Scene_04_Review.mp4" target="_blank">
+        🔗 Direct CDN Release Link (Fallback)
+      </a>
+
+      <div class="tip-box">
+        💡 <strong>iPhone / Android Tip:</strong> If tapping Download opens the video in a tab, long-press the green button and select <em>"Download Linked File"</em>, or tap the Share icon <span style="font-size:14px">⎙</span> inside Safari and tap <em>"Save Video"</em> to save straight to your Camera Roll!
+      </div>
+    </div>
+  </div>
+
+  <div class="status-card">
+    <strong>Audited Changes in Scene 04:</strong>
+    <ul>
+      <li><span class="check">✓</span> <strong>Jarring 52s Jump Cut Eliminated</strong>: Spliced smoothly at t=7.0s from the wide carpet rug view directly into a medium close-up of Leo holding and placing a block with intense focus. Zero camera snaps or 45° room flips.</li>
+      <li><span class="check">✓</span> <strong>Floating Blocks Eradicated</strong>: All blocks sit firmly flat on the bedroom carpet rug with realistic ambient occlusion and contact shadows. Zero mid-air hovering pieces.</li>
+      <li><span class="check">✓</span> <strong>Narration Alignment</strong>: Ava's narration ("For three days, eight-year-old Leo had been working on his masterpiece...") aligns exactly with Leo's careful craftsmanship.</li>
+      <li><span class="check">✓</span> <strong>Technical Specs</strong>: Exactly 15.000s runtime (360 frames @ 24.000fps) and 48kHz stereo master audio.</li>
+    </ul>
+  </div>
+
+  <div class="scene-nav">
+    <h3>Progressive Scene Review Pipeline</h3>
+    <div class="scene-pills">
+      <span class="pill pill-active">▶ Scene 04 (Current)</span>
+      <span class="pill pill-pending">⏳ Scene 08 (Help Rejection)</span>
+      <span class="pill pill-pending">⏳ Scene 09 (Single Mom Sarah)</span>
+      <span class="pill pill-pending">⏳ Scene 11 (Forward Rebuild)</span>
+    </div>
+  </div>
+
+</body>
+</html>
