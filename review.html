@@ -19,7 +19,7 @@
     }
     .header {
       text-align: center;
-      max-width: 650px;
+      max-width: 680px;
       margin-top: 8px;
       margin-bottom: 16px;
     }
@@ -31,7 +31,7 @@
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 1px;
-      padding: 4px 12px;
+      padding: 4px 14px;
       border-radius: 999px;
       margin-bottom: 8px;
       text-transform: uppercase;
@@ -48,6 +48,46 @@
       color: #94a3b8;
       line-height: 1.4;
     }
+
+    /* Scene Selector Tabs */
+    .tab-bar {
+      display: flex;
+      gap: 6px;
+      max-width: 680px;
+      width: 100%;
+      background: #111827;
+      padding: 6px;
+      border-radius: 14px;
+      border: 1px solid #1f2937;
+      margin-bottom: 16px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .tab-btn {
+      flex: 1;
+      min-width: 130px;
+      padding: 10px 12px;
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: #10b981;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+    }
+    .tab-btn:hover:not(.active) {
+      background: #1e293b;
+      color: #f1f5f9;
+    }
+
     .player-card {
       width: 100%;
       max-width: 680px;
@@ -56,7 +96,7 @@
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
       border: 1px solid #1e293b;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
     video {
       width: 100%;
@@ -96,6 +136,17 @@
     .btn:active {
       transform: scale(0.98);
     }
+    .tip-box {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 12px;
+      color: #93c5fd;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
     .status-card {
       max-width: 680px;
       width: 100%;
@@ -106,115 +157,171 @@
       font-size: 13px;
       color: #94a3b8;
       line-height: 1.6;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
     }
     .status-card strong { color: #f1f5f9; }
     .status-card ul { margin-left: 20px; margin-top: 8px; }
     .status-card li { margin-bottom: 6px; }
     .check { color: #34d399; font-weight: bold; margin-right: 4px; }
-    .scene-nav {
-      max-width: 680px;
-      width: 100%;
-      background: #131b2e;
-      border-radius: 12px;
-      padding: 14px;
-      border: 1px solid #1e293b;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 24px;
+    .narration-box {
+      background: #182234;
+      border-left: 3px solid #38bdf8;
+      padding: 10px 14px;
+      border-radius: 0 8px 8px 0;
+      margin-top: 10px;
+      color: #e2e8f0;
+      font-style: italic;
+      font-size: 12.5px;
     }
-    .scene-nav h3 {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #94a3b8;
-      margin-bottom: 4px;
-    }
-    .scene-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .pill {
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .pill-active {
-      background: #10b981;
-      color: #ffffff;
-    }
-    .pill-pending {
-      background: #1e293b;
-      color: #64748b;
-      border: 1px solid #283548;
-    }
-    .tip-box {
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      border-radius: 10px;
-      padding: 12px;
-      font-size: 12px;
-      color: #93c5fd;
-      line-height: 1.5;
-      margin-top: 8px;
-    }
+
+    .scene-content { display: none; }
+    .scene-content.active { display: block; }
   </style>
 </head>
 <body>
 
   <div class="header">
-    <div class="badge">🎬 Production Quality Review • Clip 1 of 4</div>
-    <h1>Scene 04 Review (0:45 – 1:00)</h1>
-    <p class="subtitle">15.000s • 360 frames @ 24fps • Full 48kHz Ava Narration & Audio</p>
+    <div class="badge">🎬 Production Continuity Review</div>
+    <h1 id="page-title">Scene Review: Scene 04</h1>
+    <p class="subtitle">Exact 15.000s • 360 frames @ 24fps • Full 48kHz Narration & Soundscape</p>
   </div>
 
+  <!-- Scene Selector Tabs -->
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchScene('sc04')">Scene 04 (0:45)</button>
+    <button class="tab-btn" onclick="switchScene('sc08')">Scene 08 (1:45)</button>
+    <button class="tab-btn" onclick="switchScene('sc09')">Scene 09 (2:00)</button>
+    <button class="tab-btn" onclick="switchScene('sc11')">Scene 11 (2:30)</button>
+  </div>
+
+  <!-- Player Card -->
   <div class="player-card">
-    <video controls playsinline preload="auto" poster="poster.jpg">
-      <source src="Scene_04_Review.mp4" type="video/mp4">
-      <source src="https://github.com/geordit1993/poor-in-spirit-animated-master/releases/download/v2.5.0/Scene_04_Review.mp4" type="video/mp4">
+    <video id="main-video" controls playsinline preload="auto">
+      <source id="video-source" src="Scene_04_Review.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
     <div class="actions">
-      <a class="btn btn-download" href="Scene_04_Review.mp4" download="Scene_04_Review.mp4">
-        ⬇️ Save Video to Phone / Files (22.8 MB)
+      <a id="btn-download" class="btn btn-download" href="Scene_04_Review.mp4" download="Scene_04_Review.mp4">
+        ⬇️ Save Video to Phone / Files
       </a>
-      <a class="btn btn-secondary" href="https://github.com/geordit1993/poor-in-spirit-animated-master/releases/download/v2.5.0/Scene_04_Review.mp4" target="_blank">
-        🔗 Direct CDN Release Link (Fallback)
+      <a id="btn-raw" class="btn btn-secondary" href="Scene_04_Review.mp4" target="_blank">
+        ▶️ Open Direct Video Stream
       </a>
 
       <div class="tip-box">
-        💡 <strong>iPhone / Android Tip:</strong> If tapping Download opens the video in a tab, long-press the green button and select <em>"Download Linked File"</em>, or tap the Share icon <span style="font-size:14px">⎙</span> inside Safari and tap <em>"Save Video"</em> to save straight to your Camera Roll!
+        💡 <strong>iPhone / Android Tip:</strong> Tap <em>"Save Video to Phone"</em> to download. In Safari, you can also long-press the video or tap the Share icon <span style="font-size:14px">⎙</span> and select <em>"Save Video"</em> to save directly to your Photos / Camera Roll!
       </div>
     </div>
   </div>
 
-  <div class="status-card">
-    <strong>Audited Changes in Scene 04:</strong>
-    <ul>
+  <!-- Scene 04 Details -->
+  <div id="content-sc04" class="status-card scene-content active">
+    <strong>Audited Changes in Scene 04 (0:45 – 1:00):</strong>
+    <div class="narration-box">
+      "For three days, eight-year-old Leo had been working on his masterpiece: a towering wooden castle with bridges, spires, and walls that stretched across his bedroom floor. It was the tallest thing he had ever made, and he had built every single inch of it himself."
+    </div>
+    <ul style="margin-top: 12px;">
       <li><span class="check">✓</span> <strong>Jarring 52s Jump Cut Eliminated</strong>: Spliced smoothly at t=7.0s from the wide carpet rug view directly into a medium close-up of Leo holding and placing a block with intense focus. Zero camera snaps or 45° room flips.</li>
-      <li><span class="check">✓</span> <strong>Floating Blocks Eradicated</strong>: All blocks sit firmly flat on the bedroom carpet rug with realistic ambient occlusion and contact shadows. Zero mid-air hovering pieces.</li>
-      <li><span class="check">✓</span> <strong>Narration Alignment</strong>: Ava's narration ("For three days, eight-year-old Leo had been working on his masterpiece...") aligns exactly with Leo's careful craftsmanship.</li>
-      <li><span class="check">✓</span> <strong>Technical Specs</strong>: Exactly 15.000s runtime (360 frames @ 24.000fps) and 48kHz stereo master audio.</li>
+      <li><span class="check">✓</span> <strong>Floating Blocks Eradicated</strong>: All wooden blocks sit firmly flat on the bedroom carpet rug with realistic ambient occlusion and contact shadows. Zero mid-air hovering pieces.</li>
+      <li><span class="check">✓</span> <strong>Physical Continuity</strong>: Leo in blue hoodie, wooden blocks with consistent wood grain, consistent bedside table and window lighting.</li>
     </ul>
   </div>
 
-  <div class="scene-nav">
-    <h3>Progressive Scene Review Pipeline</h3>
-    <div class="scene-pills">
-      <span class="pill pill-active">▶ Scene 04 (Current)</span>
-      <span class="pill pill-pending">⏳ Scene 08 (Help Rejection)</span>
-      <span class="pill pill-pending">⏳ Scene 09 (Single Mom Sarah)</span>
-      <span class="pill pill-pending">⏳ Scene 11 (Forward Rebuild)</span>
+  <!-- Scene 08 Details -->
+  <div id="content-sc08" class="status-card scene-content">
+    <strong>Audited Changes in Scene 08 (1:45 – 2:00):</strong>
+    <div class="narration-box">
+      "Leo frowned and looked away. 'No,' he said, his voice quiet but sharp. 'I can do it myself. I don't need help.'"
     </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Help Rejection Synchronization</strong>: In direct synchronization with the narration ("Leo frowned and looked away"), Leo maintains a firm defensive crossed-arms refusal posture and pout throughout Shot 3 right up to the cut at 2:00.</li>
+      <li><span class="check">✓</span> <strong>Zero Premature Acceptance</strong>: Leo NEVER drops his hands, NEVER uncrosses his arms, and NEVER reaches out or grabs Maya's arch block.</li>
+      <li><span class="check">✓</span> <strong>Character Rigidity & Emotion</strong>: Retimed via motion interpolation to sustain Leo's authentic defensive posture, perfectly matching the script.</li>
+    </ul>
   </div>
+
+  <!-- Scene 09 Details -->
+  <div id="content-sc09" class="status-card scene-content">
+    <strong>Audited Changes in Scene 09 (2:00 – 2:15):</strong>
+    <div class="narration-box">
+      "His mother, Sarah, came in and sat beside him on the floor. 'It hurts when something you worked so hard on falls apart,' she said gently. 'You know, Leo, you don't have to build it all by yourself.'"
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Pre-Collapsed Castle Staging</strong>: The wooden block castle is ALREADY completely in a stationary fallen pile on the ornate Persian rug from frame 1 when Sarah enters. Zero premature standing structures.</li>
+      <li><span class="check">✓</span> <strong>Strictly ONE Mom Sarah</strong>: Zero clone mothers. Only Mom Sarah in her teal cardigan and white blouse kneeling beside Leo.</li>
+      <li><span class="check">✓</span> <strong>Zero Floating Blocks / Zero Reverses</strong>: Blocks rest flat on the rug for the entire scene (zero blocks lifting into the air, zero reverse explosion loops).</li>
+      <li><span class="check">✓</span> <strong>Intimate Comfort Close-Up</strong>: Spliced seamlessly into a warm close-up of Mom Sarah smiling gently with her hand on Leo's shoulder as she delivers her line.</li>
+    </ul>
+  </div>
+
+  <!-- Scene 11 Details -->
+  <div id="content-sc11" class="status-card scene-content">
+    <strong>Audited Changes in Scene 11 (2:30 – 2:45):</strong>
+    <div class="narration-box">
+      "Together, the three of them built a castle far taller and stronger than Leo could have made on his own. Leo stepped back, smiling."
+    </div>
+    <ul style="margin-top: 12px;">
+      <li><span class="check">✓</span> <strong>Forward Collaborative Rebuild</strong>: Maya places the wooden arch on top of the towers while Mom Sarah steadies the pillars with both hands and Leo places the foundation.</li>
+      <li><span class="check">✓</span> <strong>Zero Morphing & Zero Reverses</strong>: Blocks do not morph or spontaneously change shapes. All pieces are placed naturally by hand with realistic gravity.</li>
+      <li><span class="check">✓</span> <strong>Emotional Resolution</strong>: Maya claps and laughs with pure delight, Mom smiles warmly, and Leo beams happily at what they built together.</li>
+      <li><span class="check">✓</span> <strong>Finished Masterpiece Hero Shot</strong>: Concludes with a majestic close tracking shot of the completed wooden castle standing solid and tall on the rug in the morning sun.</li>
+    </ul>
+  </div>
+
+  <script>
+    const scenes = {
+      sc04: {
+        title: "Scene Review: Scene 04 (0:45 – 1:00)",
+        file: "Scene_04_Review.mp4"
+      },
+      sc08: {
+        title: "Scene Review: Scene 08 (1:45 – 2:00)",
+        file: "Scene_08_Review.mp4"
+      },
+      sc09: {
+        title: "Scene Review: Scene 09 (2:00 – 2:15)",
+        file: "Scene_09_Review.mp4"
+      },
+      sc11: {
+        title: "Scene Review: Scene 11 (2:30 – 2:45)",
+        file: "Scene_11_Review.mp4"
+      }
+    };
+
+    function switchScene(key) {
+      const data = scenes[key];
+      if (!data) return;
+
+      document.getElementById('page-title').innerText = data.title;
+      
+      const video = document.getElementById('main-video');
+      const source = document.getElementById('video-source');
+      source.src = data.file;
+      video.load();
+
+      const btnDownload = document.getElementById('btn-download');
+      btnDownload.href = data.file;
+      btnDownload.setAttribute('download', data.file);
+
+      const btnRaw = document.getElementById('btn-raw');
+      btnRaw.href = data.file;
+
+      document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+        const keys = ['sc04', 'sc08', 'sc09', 'sc11'];
+        if (keys[idx] === key) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      document.querySelectorAll('.scene-content').forEach(el => {
+        el.classList.remove('active');
+      });
+      document.getElementById('content-' + key).classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
