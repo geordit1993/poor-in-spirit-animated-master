@@ -1,2 +1,3 @@
 *.mp4
 !Scene_*_Review.mp4
+.firebase/
